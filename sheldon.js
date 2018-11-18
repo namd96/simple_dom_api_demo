@@ -2,8 +2,9 @@ class SheldonContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            cw: props.catchWord,
             showName: false,
-            currentMessage: "Bazingaa!!"
+            currentMessage: this.props.catchWord||"Bazingaa!!"
         }
     }
     hide() {
@@ -18,6 +19,16 @@ class SheldonContainer extends React.Component {
         console.log("show btn")
         this.setState({
             showName: true
+        })
+    }
+    showName() {
+        this.setState({
+            currentMessage: "My name is Sheldon"
+        })
+    }
+    hideName() {
+        this.setState({
+            currentMessage: this.props.catchWord || "Bazingaa!!"
         })
     }
     render() {
@@ -42,15 +53,9 @@ class SheldonContainer extends React.Component {
                 <div className="rightClass" style={{ visibility: showName ? 'visible' : 'hidden' }}>
                     <p>Try to find my name</p>
                     {showName ? <span
-                        onMouseEnter={() => {
-                            this.setState({
-                                currentMessage: "My name is Sheldon"
-                            })
-                        }}
+                        onMouseEnter={this.showName.bind(this)}
                         onMouseLeave={() => {
-                            this.setState({
-                                currentMessage: "Bazingaa!"
-                            })
+                            this.hideName()
                         }}
                     > yolo {currentMessage} </span> : ''}
                 </div>

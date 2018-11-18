@@ -91,7 +91,11 @@
                         
                         const domContainer = document.getElementById('container');
                         ReactDOM.render(
-                            [<LikeButton />,<LikeButton />,<LikeButton />, <SheldonContainer />]
+                            [<LikeButton />,<LikeButton />,<LikeButton />, 
+                            <SheldonContainer catchWord="Buzzz" />,
+                            <SheldonContainer catchWord="Puppies" />,
+                            <SheldonContainer />,
+                        ]
                             , domContainer);
             </script>
 
