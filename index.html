@@ -10,7 +10,7 @@
     <style>
 
     </style>
-   
+
 </head>
 
 <body>
@@ -18,23 +18,75 @@
 
         <div class="leftClass">
             <h1> Hello People </h1>
-            <button id = "showBtn"> Show Name </button>
+            <button id="showBtn"> Show Name </button>
             <button onclick="hint()"> hint </button>
             <button onclick="hide()"> Hide Now </button>
         </div>
 
         <div class="rightClass">
             <p>Try to find my name</p>
-            
+
         </div>
     </div>
 
-</body>
+    <div id="container">
+        Here, React will take over
+    </div>
 
-<script src="main.js"></script>
-<script type="text/javascript">
-    a = 99;
+    <script src="node_modules/react//umd/react.development.js" crossorigin></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js" crossorigin></script>
+    <script src="node_modules/babel-standalone/babel.js" crossorigin></script>
+
+    <script src="main.js"></script>
+    <script type="text/babel">
+    // a = 99;
     console.log(a);
-</script>
+    
+    const e = React.createElement;
+    
+    // Display a "Like" <button>
+        // var LikeBtn_oldway =  React.createElement(
+            //     'button',
+            //     { onClick: () => this.setState({ liked: true }) },
+            //     'Like'
+    //     );
+    
+    // JSX way
+    var LikeBtn =  (
+        <button onClick={() => this.setState({ liked: true })}>
+            Like
+            </button>
+            );
+            
+            class LikeButton extends React.Component{
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        liked:1
+                    }
+                }
+                render(){
+                    return ( <div>
+                        Liked {this.state.liked} Times!!
+                        <br />
+                        <button onClick={() => {
+                                    console.log("Yolo ",this.state);
+                                    this.setState({ liked: this.state.liked+1 })
+                                }
+                            }>
+                            Like! 
+                            </button>
+                        </div>
+                        )
+                    }
+                }   
+                        
+                        const domContainer = document.getElementById('container');
+                        ReactDOM.render(
+                            [<LikeButton />,<LikeButton />,<LikeButton />]
+                            , domContainer);
+            </script>
+
+</body>
 
 </html>
