@@ -29,6 +29,9 @@
         </div>
     </div>
 
+    VANILLA JS ABOVE
+    <hr />
+    REACT JS BELOW
     <div id="container">
         Here, React will take over
     </div>
@@ -36,14 +39,12 @@
     <script src="node_modules/react//umd/react.development.js" crossorigin></script>
     <script src="node_modules/react-dom/umd/react-dom.development.js" crossorigin></script>
     <script src="node_modules/babel-standalone/babel.js" crossorigin></script>
+    <script src="node_modules/axios/dist/axios.js" crossorigin></script>
 
     <script src="main.js"></script>
+    <script  type="text/babel" src="sheldon.js"></script>
     <script type="text/babel">
-    // a = 99;
     console.log(a);
-    
-    const e = React.createElement;
-    
     // Display a "Like" <button>
         // var LikeBtn_oldway =  React.createElement(
             //     'button',
@@ -55,8 +56,8 @@
     var LikeBtn =  (
         <button onClick={() => this.setState({ liked: true })}>
             Like
-            </button>
-            );
+        </button>
+        );
             
             class LikeButton extends React.Component{
                 constructor(props){
@@ -71,7 +72,14 @@
                         <br />
                         <button onClick={() => {
                                     console.log("Yolo ",this.state);
-                                    this.setState({ liked: this.state.liked+1 })
+                                    this.setState({ liked: this.state.liked+1 });
+                                    axios.get('http://localhost:2000 /test')
+                                    .then(function (response) {
+                                        console.log("YOLO ",response);
+                                    })
+                                    .catch(function (error) {
+                                        console.log("ERROR ",error);
+                                    });
                                 }
                             }>
                             Like! 
@@ -83,7 +91,7 @@
                         
                         const domContainer = document.getElementById('container');
                         ReactDOM.render(
-                            [<LikeButton />,<LikeButton />,<LikeButton />]
+                            [<LikeButton />,<LikeButton />,<LikeButton />, <SheldonContainer />]
                             , domContainer);
             </script>
 
